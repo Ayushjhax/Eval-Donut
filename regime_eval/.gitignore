@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Generated self-evolution logs (regenerated on every notebook run)
+evolution/logs/*.jsonl
+
+# NOTE: data/cache/*.csv is intentionally NOT ignored — committing the cached
+# OHLCV lets the notebook run top-to-bottom with no network or API keys.
