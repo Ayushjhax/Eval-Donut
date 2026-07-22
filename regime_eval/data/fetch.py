@@ -23,10 +23,8 @@ logger = logging.getLogger(__name__)
 
 OHLCV_COLUMNS = ["open", "high", "low", "close", "volume"]
 
-
-# --------------------------------------------------------------------------- #
 # Source 1: ccxt / Binance (primary)
-# --------------------------------------------------------------------------- #
+
 def _fetch_ccxt(
     symbol: str,
     timeframe: str,
@@ -34,7 +32,7 @@ def _fetch_ccxt(
 ) -> pd.DataFrame:
     """Fetch full OHLCV history from Binance via ccxt, paginating as needed.
 
-    Args:
+    Args: 
         symbol: ccxt market symbol, e.g. ``"SOL/USDT"``.
         timeframe: ccxt timeframe string, e.g. ``"1d"``.
         start: ISO date string for the earliest candle to request.
@@ -74,9 +72,8 @@ def _fetch_ccxt(
     return frame
 
 
-# --------------------------------------------------------------------------- #
 # Source 2: CryptoCompare / CoinDesk (fallback)
-# --------------------------------------------------------------------------- #
+
 def _fetch_cryptocompare(
     base: str,
     quote: str,
@@ -124,9 +121,7 @@ def _fetch_cryptocompare(
     return frame
 
 
-# --------------------------------------------------------------------------- #
 # Public entry point
-# --------------------------------------------------------------------------- #
 def load_price_data(
     symbol: str = config.SYMBOL,
     timeframe: str = config.TIMEFRAME,
