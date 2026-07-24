@@ -157,22 +157,6 @@ The headline is deliberately **not** "SafeEvolve makes more money." In a heavy-t
 - **Conservative safe-mode exit.** Once the breaker trips, this prototype stays in hold-only safe mode for the remainder of the run (it cannot climb back to within 5% of its peak while flat). This is deliberately conservative for a demo; a production system would add *graded re-risking* (§8).
 - **Interpretable, not maximal.** No deep learning by design: every class and method carries a docstring explaining the *research motivation*, every decision is logged with a reason string, and every file is under 200 lines. The prototype optimises for auditability, not leaderboard performance.
 
-## 8. From prototype to production (e.g. an AI brokerage such as D0)
-
-This prototype is the *control skeleton* a real AI brokerage would wrap around live order flow; the mapping is direct:
-
-- **The safety layer becomes a pre-trade risk engine.** The per-trade cap, drawdown breaker, and uncertainty gate move in front of the order router as hard, non-bypassable checks. Every order carries the same reason-string audit trail — which is exactly what a risk/compliance desk and a regulator need to see.
-- **BOCPD confidence becomes a firm-wide risk dial.** A calibrated "we don't know what regime this is" signal is exactly what should throttle sizing, widen stops, and — critically — **freeze model self-updates** across the book during a flash crash or liquidity vacuum.
-- **The evolution gate becomes a model-governance control.** Continuous learning is valuable but is the scariest thing to run unsupervised on real capital. Gating updates on solvency + confidence, discarding distressed-window data, and logging every allowed/blocked update with its trigger is a concrete, auditable answer to *"when is the agent allowed to change itself?"*
-- **What production adds (and this prototype intentionally omits):** graded re-risking instead of a hard freeze; transaction-cost / slippage / liquidity modelling; multi-asset portfolio constraints and correlation-aware limits; a proper walk-forward / out-of-sample harness; and human-in-the-loop sign-off on large evolution events. The architecture here is designed to accept all of these *without changing shape*.
-
-## 9. What this is meant to demonstrate
-
-1. **Safety in agentic systems is architectural, not a post-hoc filter** — it lives between intent and execution and can always veto.
-2. **Non-stationarity and heavy tails are the core challenge**, not decoration — the whole design is organised around detecting switches and surviving fat-tailed shocks.
-3. **Self-evolution must be gated by safety state** — the load-bearing insight, demonstrated live in panel 5: an ungated learner adapts into a tail event and makes the next one worse.
-4. **The code is clean enough to read, run, and extend** — not just impressive from the outside.
-
 ## References
 
 - R. P. Adams and D. J. C. MacKay (2007). *Bayesian Online Changepoint Detection.* arXiv:0710.3742. — the run-length posterior used by the detector.
