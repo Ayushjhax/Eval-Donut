@@ -12,9 +12,6 @@ Self-evolving agents are attractive in financial markets precisely because those
 
 <img width="708" height="525" alt="image" src="https://github.com/user-attachments/assets/0e8f504b-2fde-4a03-a444-68528d5016a8" />
 
-
-> **Reading guide.** This document is written as a research report; §1–§7 are the argument. Reproduction is deliberately a short appendix (§A) — the point is the *design*, not the run button. A longer write-up with additional figures lives in [`report/SafeEvolve_Research_Report.docx`](report/SafeEvolve_Research_Report.docx).
-
 ---
 
 ## 1. Motivation
