@@ -112,9 +112,6 @@ At **equal average exposure**, the targeted agent posts a smaller CVaR and a sha
 - **`high-vol` posts the highest mean return *and* the highest variance.** That is not a bug; it is the seed of the whole problem. Crypto's largest single-day moves cluster in the high-vol regime, which is exactly why a tail-blind metric (Sharpe) rates it best and a tail-aware one (CVaR) rates it worst.
 - **Single asset, single strategy, one history.** The claim is methodological — *how to evaluate* — not that momentum on SOL is a good strategy. The harness is built to swap in either.
 
-## 7. From harness to production
-
-The pieces map onto a real evaluation/risk stack: per-regime metrics become the reporting layer a risk desk reads instead of a single headline Sharpe; the KS shift detector becomes a live *eval-validity monitor* that flags when a deployed model's backtest no longer describes the market; and the self-evolution stub becomes the governed control that throttles exposure — with a structured, auditable log of every self-modification — when that monitor fires. What production adds: multi-asset and correlation-aware limits, transaction-cost/slippage modelling, a walk-forward out-of-sample harness, and human sign-off on large self-modifications.
 
 ## References
 
