@@ -1,5 +1,5 @@
 """
-eval/run_experiment.py -- Entry point. Runs SafeEvolve vs the naive baseline on one
+Entry point. Runs SafeEvolve vs the naive baseline on one
 shared non-stationary market stream, prints an audit-friendly summary, and writes a
 single comparison figure to results/comparison.png.
 
@@ -9,6 +9,7 @@ Timing convention (no look-ahead): at step t the agents see information through
 returns[0..t] and choose an exposure; the P&L they are graded on is returns[t+1],
 which is realized only after the decision is locked in.
 """
+
 from __future__ import annotations
 
 import os

@@ -1,8 +1,4 @@
 """
-eval/plots.py -- Single-figure visual comparison of SafeEvolve vs the naive baseline.
-
-Research motivation
--------------------
 A researcher should be able to see the whole story in one glance: where the naive
 agent blows up, how the safe agent behaves through the same shocks, whether the regime
 detector tracks reality, and -- the crux -- when self-evolution was allowed vs blocked.

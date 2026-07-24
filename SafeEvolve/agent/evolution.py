@@ -1,8 +1,4 @@
 """
-agent/evolution.py -- Safety-GATED self-evolution.
-
-Research motivation
--------------------
 Self-evolution needs feedback, and financial markets supply an endless non-stationary
 stream of it. But that feedback is noisy, delayed, and regime-dependent, which creates
 a specific and dangerous failure mode:
@@ -23,6 +19,7 @@ The update itself is deliberately simple and interpretable: an EMA of the realiz
 per-regime Sharpe ratio nudges that regime's position-size scale up (when recent
 risk-adjusted performance is good) or down (when it is poor).
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field

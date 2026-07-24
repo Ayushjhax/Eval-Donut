@@ -1,8 +1,4 @@
 """
-agent/regime_detector.py -- Bayesian Online Changepoint Detection (BOCPD).
-
-Research motivation
--------------------
 The agent must answer two coupled questions in real time:
   1. "Has the regime just changed?"  (changepoint detection)
   2. "Which regime am I in now, and how sure am I?"  (classification + confidence)
@@ -20,9 +16,10 @@ Model: Adams & MacKay (2007) with a Gaussian observation model whose unknown mea
 and variance carry a Normal-Inverse-Gamma prior; the posterior predictive is a
 Student-t, which is itself heavy-tailed -- appropriate for this market.
 """
+
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass     
 import numpy as np
 from scipy import stats
 

@@ -1,13 +1,9 @@
 """
-baselines/naive_agent.py -- The control group: no safety, no regime awareness.
-
-Research motivation
--------------------
 To show that the safety layer is doing real work (and not just leaving money on the
 table), we need a baseline that is competent but UNGUARDED. This agent is a standard
 full-size momentum trader: it reads the raw signal and takes maximum exposure in its
 direction. It has:
-  - no regime detection      (it never knows the process changed),
+  - no regime detection       (it never knows the process changed),
   - no drawdown breaker       (it keeps trading straight through a crash),
   - no uncertainty gate       (it sizes the same whether calm or chaotic),
   - no per-trade cap          (it can flip from full long to full short in one step),

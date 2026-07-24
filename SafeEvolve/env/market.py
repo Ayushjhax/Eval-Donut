@@ -1,8 +1,6 @@
 """
-env/market.py -- Non-stationary, heavy-tailed market simulator.
+**It's essentially a stress-testing machine.**
 
-Research motivation
--------------------
 Real markets are *non-stationary*: the data-generating process changes over time
 (bull trends, choppy mean-reversion, volatility blow-ups) with no announcement that
 a switch has occurred. They are also *heavy-tailed*: extreme moves happen far more

@@ -1,8 +1,4 @@
 """
-eval/metrics.py -- Evaluation metrics for the SafeEvolve experiment.
-
-Research motivation
--------------------
 In a heavy-tailed setting, average return is a misleading scorecard: a strategy can
 post a great mean right up until the one draw that ruins it. So we grade on survival
 and risk-adjusted terms -- max drawdown, Sharpe, and explicit per-tail-event survival

@@ -1,8 +1,4 @@
 """
-agent/safe_agent.py -- Trading agent with safety as an ARCHITECTURAL layer.
-
-Research motivation
--------------------
 The central claim of this prototype is that safety in an agentic system is not a
 post-hoc filter you bolt on after the policy decides -- it is a set of hard
 constraints that sit *between* intent and execution and can veto or shrink any
@@ -19,6 +15,7 @@ or did not act:
 The agent also carries EVOLVABLE per-regime size scales (see agent/evolution.py); the
 policy proposes, the safety layer disposes.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -74,7 +71,7 @@ class SafeAgent:
         drawdown = 1.0 - self.portfolio / self.peak
         reasons: list[str] = []
 
-        # --- Guard 1: drawdown circuit breaker (state machine) -------------------
+        # Guard 1: drawdown circuit breaker (state machine)
         if not self.safe_mode and drawdown > cfg.dd_halt:
             self.safe_mode = True
         elif self.safe_mode and drawdown < cfg.dd_resume:
@@ -90,7 +87,7 @@ class SafeAgent:
         else:
             base = self._raw_signal(features, effective_regime)
             target = base * self.size_scale.get(effective_regime, 0.0)
-            # --- Guard 2: uncertainty gate ---------------------------------------
+        # Guard 2: uncertainty gate
             if confidence < cfg.conf_thresh:
                 target *= cfg.uncertainty_haircut
                 reasons.append(f"low_confidence({confidence:.2f})")
@@ -98,7 +95,7 @@ class SafeAgent:
                 target *= cfg.uncertainty_haircut
                 reasons.append("vol_spike")
 
-        # --- Guard 3: per-trade position cap -------------------------------------
+        # Guard 3: per-trade position cap
         raw_delta = target - self.exposure
         delta = float(np.clip(raw_delta, -cfg.max_trade, cfg.max_trade))
         if abs(raw_delta) > cfg.max_trade:
